@@ -1,0 +1,13 @@
+div#container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: lightgrey;
+    height: 50px;
+}
+
+button#quizButton {
+    width: 110px;
+    height: 30px;
+}

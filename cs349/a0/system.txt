@@ -1,0 +1,38 @@
+┌─────────────────────────────────────────────────────────────────────────────────────────┐
+│  SYSTEMINFORMATION                                                      Version: 5.23.5 │
+└─────────────────────────────────────────────────────────────────────────────────────────┘
+
+Operating System:
+──────────────────────────────────────────────────────────────────────────────────────────
+Platform         : darwin
+Distro           : macOS
+Release          : 13.2.1
+Codename         : macOS Ventura
+Kernel           : 22.3.0
+Arch             : x64
+Hostname         : MacBook-Pro.phub.net.cable.rogers.com
+Codepage         : UTF-8
+Build            : 22D68
+
+System:
+──────────────────────────────────────────────────────────────────────────────────────────
+Manufacturer     : Apple Inc.
+Model            : Mac
+Version          : 14,10
+Virtual          : 
+
+CPU:
+──────────────────────────────────────────────────────────────────────────────────────────
+Manufacturer     : Apple
+Brand            : M2 Pro
+Family           : 6
+Model            : 
+Stepping         : 0
+Speed            : 2.4
+Cores            : 12
+PhysicalCores    : 12
+PerformanceCores : 12
+EfficiencyCores  : 
+Processors       : 1
+Socket           : 
+

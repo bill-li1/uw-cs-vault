@@ -1,0 +1,8 @@
+div#status-bar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: lightgrey;
+    height: 50px;
+}

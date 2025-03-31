@@ -1,0 +1,2 @@
+Arc Version 1.53.0 (52080)
+Chromium Engine Version 127.0.6533.73

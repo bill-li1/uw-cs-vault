@@ -1,0 +1,16 @@
+div#question-container {
+    display: flex;
+    height: 30px;
+    align-items: center;
+    background-color: lightblue;
+    padding: 10px;
+}
+
+span#question-text {
+    margin-left: 5px;
+    font-size: 14px;
+}
+
+input#question-checkbox {
+    margin: 0px;
+}
