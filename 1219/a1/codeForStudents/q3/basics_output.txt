@@ -1,0 +1,32 @@
+# Invalid number of command-line arguments.
+$ ./produceOutputs 1> err1.stdout 2> err1.stderr
+$ echo $?
+1
+$ cat err1.stdout
+$ cat err1.stderr
+Incorrect number of arguments
+$ ./produceOutputs a b c 1> err2.stdout 2> err2.stderr
+$ echo $?
+1
+$ cat err2.stdout
+$ cat err2.stderr
+Incorrect number of arguments
+# Test suite file that cannot be read.
+$ ./produceOutputs no_read.args ./my_factorial_correct 1> err3.stdout 2> err3.stderr
+$ echo $?
+1
+$ cat err3.stdout
+$ cat err3.stderr
+no_read.args is not readable
+# Program that cannot be executed.
+$ ./produceOutputs test_suite.txt no_execute.sh 1> err4.stdout 2> err4.stderr
+$ echo $?
+1
+$ cat err4.stdout
+$ cat err4.stderr
+no_execute.sh is not executable
+$ ./produceOutputs test_suite.txt ./my_factorial_correct 1> good.stdout 2> good.stderr
+$ echo $?
+0
+$ cat good.stdout
+$ cat good.stderr

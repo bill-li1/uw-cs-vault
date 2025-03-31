@@ -1,0 +1,92 @@
+$ ls -l | egrep "test|no_"
+-rw-r----- 1 cs246 cs246     0 Aug 11 16:09 test0.args
+-rw-r----- 1 cs246 cs246     2 May  4 11:53 test0.in
+--w-r----- 1 cs246 cs246     2 May  4 11:53 test1.in
+-rw-r----- 1 cs246 cs246     3 May  4 11:53 test2.in
+-rw-r----- 1 cs246 cs246     2 May  4 11:53 test3.in
+-rw-r----- 1 cs246 cs246     4 May  4 11:53 test4.args
+-rw-r----- 1 cs246 cs246     3 Aug 11 16:27 test4.in
+-rw-r----- 1 cs246 cs246    24 Aug 11 16:24 test_suite1.txt
+-rw-r----- 1 cs246 cs246    30 Aug 11 16:29 test_suite2.txt
+-rw-r----- 1 cs246 cs246    30 Aug 11 16:29 test_suite3.txt
+$ cat test_suite1.txt
+test0
+test2
+test3
+test4
+$ ./produceOutputs test_suite1.txt ./my_factorial_correct 1> t1.stdout 2> t1.stderr
+$ echo $?
+0
+$ cat t1.stdout
+$ cat t1.stderr
+# Show some failed test results
+$ ./runSuite test_suite1.txt ./my_factorial_buggy 1> t2.stdout 2> t2.stderr
+$ echo $?
+0
+$ cat t2.stdout
+Test failed: test3
+Args:
+Input:
+0
+Expected:
+Enter a positive integer: 0! = 1
+Actual:
+Enter a positive integer: 0! = 0
+$ cat t2.stderr
+$ ls -l | egrep "test|no_"
+-rw-r----- 1 cs246 cs246     0 Aug 11 16:09 test0.args
+-rw-r----- 1 cs246 cs246     2 May  4 11:53 test0.in
+--w-r----- 1 cs246 cs246     2 May  4 11:53 test1.in
+-rw-r----- 1 cs246 cs246     3 May  4 11:53 test2.in
+-rw-r----- 1 cs246 cs246     2 May  4 11:53 test3.in
+-rw-r----- 1 cs246 cs246     4 May  4 11:53 test4.args
+-rw-r----- 1 cs246 cs246     3 Aug 11 16:27 test4.in
+-rw-r----- 1 cs246 cs246    24 Aug 11 16:24 test_suite1.txt
+-rw-r----- 1 cs246 cs246    30 Aug 11 16:29 test_suite2.txt
+-rw-r----- 1 cs246 cs246    30 Aug 11 16:29 test_suite3.txt
+# Show some failed test results and some error messages
+$ cat test_suite2.txt
+test0
+test2
+test3
+test4
+test1
+$ ./produceOutputs test_suite2.txt ./my_factorial_correct 1> t1.stdout 2> t1.stderr
+$ echo $?
+1
+$ cat t1.stdout
+$ cat t1.stderr
+test1.in is not readable
+$ ./runSuite test_suite2.txt ./my_factorial_buggy 1> t2.stdout 2> t2.stderr
+$ echo $?
+1
+$ cat t2.stdout
+Test failed: test3
+Args:
+Input:
+0
+Expected:
+Enter a positive integer: 0! = 1
+Actual:
+Enter a positive integer: 0! = 0
+$ cat t2.stderr
+File test1.out does not exist or is not readable
+# Show that the placement of a non-readable .out file causes runSuite to end early
+$ cat test_suite3.txt
+test0
+test1
+test2
+test3
+test4
+$ ./produceOutputs test_suite3.txt ./my_factorial_correct 1> t1.stdout 2> t1.stderr
+$ echo $?
+1
+$ cat t1.stdout
+$ cat t1.stderr
+test1.in is not readable
+$ ./runSuite test_suite3.txt ./my_factorial_buggy 1> t2.stdout 2> t2.stderr
+$ echo $?
+1
+$ cat t2.stdout
+$ cat t2.stderr
+File test1.out does not exist or is not readable

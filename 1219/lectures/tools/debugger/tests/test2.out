@@ -1,0 +1,122 @@
+Tic Tac Toe game
+
+[row][column] to make a move (e.g., a1, b2, etc.)
+[undo] to undo the last move
+[list] to list all the moves done so far
+
+  1   2   3
+a   |   |  
+ ---+---+---
+b   |   |  
+ ---+---+---
+c   |   |  
+X's turn: 
+  1   2   3
+a X |   |  
+ ---+---+---
+b   |   |  
+ ---+---+---
+c   |   |  
+O's turn: 
+  1   2   3
+a X |   |  
+ ---+---+---
+b   | O |  
+ ---+---+---
+c   |   |  
+X's turn: 
+  1   2   3
+a X |   |  
+ ---+---+---
+b   | O |  
+ ---+---+---
+c   |   | X
+O's turn: 
+  1   2   3
+a X |   | O
+ ---+---+---
+b   | O |  
+ ---+---+---
+c   |   | X
+X's turn: 
+  1   2   3
+a X |   | O
+ ---+---+---
+b   | O |  
+ ---+---+---
+c X |   | X
+O's turn: X played on a1
+O played on b2
+X played on c3
+O played on a3
+X played on c1
+
+  1   2   3
+a X |   | O
+ ---+---+---
+b   | O |  
+ ---+---+---
+c X |   | X
+O's turn: Action undone.
+
+  1   2   3
+a X |   | O
+ ---+---+---
+b   | O |  
+ ---+---+---
+c   |   | X
+X's turn: Action undone.
+
+  1   2   3
+a X |   |  
+ ---+---+---
+b   | O |  
+ ---+---+---
+c   |   | X
+O's turn: Invalid position.
+
+  1   2   3
+a X |   |  
+ ---+---+---
+b   | O |  
+ ---+---+---
+c   |   | X
+O's turn: X played on a1
+O played on b2
+X played on c3
+
+  1   2   3
+a X |   |  
+ ---+---+---
+b   | O |  
+ ---+---+---
+c   |   | X
+O's turn: 
+  1   2   3
+a X |   |  
+ ---+---+---
+b   | O |  
+ ---+---+---
+c   | O | X
+X's turn: 
+  1   2   3
+a X |   |  
+ ---+---+---
+b X | O |  
+ ---+---+---
+c   | O | X
+O's turn: 
+  1   2   3
+a X |   | O
+ ---+---+---
+b X | O |  
+ ---+---+---
+c   | O | X
+X's turn: 
+  1   2   3
+a X |   | O
+ ---+---+---
+b X | O |  
+ ---+---+---
+c X | O | X
+Player X won!
