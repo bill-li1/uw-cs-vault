@@ -1,0 +1,81 @@
+$ ls -l | egrep "test|no_"
+-rw-r----- 1 cs246 cs246     0 May 31 12:41 no_execute.sh
+--w-r----- 1 cs246 cs246     0 Aug 11 14:45 no_read.args
+-r--r----- 1 cs246 cs246     0 May  4 10:08 no_write.out
+-rw-r----- 1 cs246 cs246     0 May  4 10:08 test0.args
+-rw-r----- 1 cs246 cs246     2 May  4 10:08 test1.args
+-rw-r----- 1 cs246 cs246     3 May  4 10:08 test2.args
+-rw-r----- 1 cs246 cs246     2 May  4 10:08 test3.args
+--w-r----- 1 cs246 cs246     0 Aug 11 14:45 test4.args
+-rw-r----- 1 cs246 cs246    24 May  4 10:14 test_suite.txt
+-rw-r----- 1 cs246 cs246    47 Jun  1 15:30 test_suite_V2.txt
+# Example of test run without any errors.
+$ cat test_suite.txt
+test0
+test1
+test2
+test3
+$ ./produceOutputs test_suite.txt ./my_factorial_correct 1> good.stdout 2> good.stderr
+$ echo $?
+0
+$ cat good.stdout
+$ cat good.stderr
+$ ls -l | egrep "test|no_"
+-rw-r----- 1 cs246 cs246     0 May 31 12:41 no_execute.sh
+--w-r----- 1 cs246 cs246     0 Aug 11 14:45 no_read.args
+-r--r----- 1 cs246 cs246     0 May  4 10:08 no_write.out
+-rw-r----- 1 cs246 cs246     0 May  4 10:08 test0.args
+-rw-r----- 1 cs246 cs246     0 Aug 11 15:00 test0.out
+-rw-r----- 1 cs246 cs246     2 May  4 10:08 test1.args
+-rw-r----- 1 cs246 cs246     9 Aug 11 15:00 test1.out
+-rw-r----- 1 cs246 cs246     3 May  4 10:08 test2.args
+-rw-r----- 1 cs246 cs246    14 Aug 11 15:00 test2.out
+-rw-r----- 1 cs246 cs246     2 May  4 10:08 test3.args
+-rw-r----- 1 cs246 cs246     7 Aug 11 15:00 test3.out
+--w-r----- 1 cs246 cs246     0 Aug 11 14:45 test4.args
+-rw-r----- 1 cs246 cs246    24 May  4 10:14 test_suite.txt
+-rw-r----- 1 cs246 cs246    47 Jun  1 15:30 test_suite_V2.txt
+$ rm *.stdout *.stderr test*.out
+$ ls -l | egrep "test|no_"
+-rw-r----- 1 cs246 cs246     0 May 31 12:41 no_execute.sh
+--w-r----- 1 cs246 cs246     0 Aug 11 14:45 no_read.args
+-r--r----- 1 cs246 cs246     0 May  4 10:08 no_write.out
+-rw-r----- 1 cs246 cs246     0 May  4 10:08 test0.args
+-rw-r----- 1 cs246 cs246     2 May  4 10:08 test1.args
+-rw-r----- 1 cs246 cs246     3 May  4 10:08 test2.args
+-rw-r----- 1 cs246 cs246     2 May  4 10:08 test3.args
+--w-r----- 1 cs246 cs246     0 Aug 11 14:45 test4.args
+-rw-r----- 1 cs246 cs246    24 May  4 10:14 test_suite.txt
+-rw-r----- 1 cs246 cs246    47 Jun  1 15:30 test_suite_V2.txt
+# Example of test run where cannot read from or write to some files.
+$ cat test_suite_V2.txt
+test0
+test1
+no_read
+no_write
+test2
+test3
+test4
+$ ./produceOutputs test_suite_V2.txt ./my_factorial_correct 1> err.stdout 2> err.stderr
+$ echo $?
+1
+$ cat err.stdout
+$ cat err.stderr
+no_read.args is not readable
+no_write.out is not writable
+test4.args is not readable
+$ ls -l | egrep "test|no_"
+-rw-r----- 1 cs246 cs246     0 May 31 12:41 no_execute.sh
+--w-r----- 1 cs246 cs246     0 Aug 11 14:45 no_read.args
+-r--r----- 1 cs246 cs246     0 May  4 10:08 no_write.out
+-rw-r----- 1 cs246 cs246     0 May  4 10:08 test0.args
+-rw-r----- 1 cs246 cs246     0 Aug 11 15:00 test0.out
+-rw-r----- 1 cs246 cs246     2 May  4 10:08 test1.args
+-rw-r----- 1 cs246 cs246     9 Aug 11 15:00 test1.out
+-rw-r----- 1 cs246 cs246     3 May  4 10:08 test2.args
+-rw-r----- 1 cs246 cs246    14 Aug 11 15:00 test2.out
+-rw-r----- 1 cs246 cs246     2 May  4 10:08 test3.args
+-rw-r----- 1 cs246 cs246     7 Aug 11 15:00 test3.out
+--w-r----- 1 cs246 cs246     0 Aug 11 14:45 test4.args
+-rw-r----- 1 cs246 cs246    24 May  4 10:14 test_suite.txt
+-rw-r----- 1 cs246 cs246    47 Jun  1 15:30 test_suite_V2.txt

@@ -1,0 +1,9 @@
+y<-c(556,678,739,653,725,714,566,797) # observed frequencies
+e<-sum(y)/8 # expected frequencies 
+lambda<-2*sum(y*log(y/e)) # observed value of LR statistic 
+df<-7 # degrees for freedom for this example equal 7 
+pvalue<-1-pchisq(lambda,df) # p-value for LR test 
+c(lambda,df,pvalue)
+d<-sum((y-e)^2/e) # observed value of Pearson goodness of fit statistic 
+pvalue<-1-pchisq(d,df) # p-value for Pearson goodness of fit test 
+c(d,df,pvalue)

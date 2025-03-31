@@ -1,0 +1,81 @@
+$ ls -l | egrep "test|no_"
+--w-r----- 1 cs246 cs246     0 May  4 11:20 no_such_file.args
+-rw-r----- 1 cs246 cs246     0 May  4 11:15 test0.out
+-rw-r----- 1 cs246 cs246     2 May  4 11:13 test1.args
+-rw-r----- 1 cs246 cs246     9 May  4 11:15 test1.out
+-rw-r----- 1 cs246 cs246     3 May  4 11:13 test2.args
+-rw-r----- 1 cs246 cs246    14 May  4 11:15 test2.out
+-rw-r----- 1 cs246 cs246     2 May  4 11:13 test3.args
+-rw-r----- 1 cs246 cs246     7 May  4 11:15 test3.out
+-rw-r----- 1 cs246 cs246     4 May  4 11:13 test4.args
+-rw-r----- 1 cs246 cs246     0 May  4 11:15 test4.out
+--w-r----- 1 cs246 cs246     6 May  4 11:13 test5.args
+-rw-r----- 1 cs246 cs246    22 May  4 11:15 test5.out
+-r--r----- 1 cs246 cs246     8 May  4 11:15 test6.out
+-rw-r----- 1 cs246 cs246    30 Aug 11 15:33 test_suite1.txt
+-rw-r----- 1 cs246 cs246    55 Aug 11 15:27 test_suite2.txt
+-rw-r----- 1 cs246 cs246    55 Aug 11 15:27 test_suite3.txt
+# runSuite runs successfully
+$ cat test_suite1.txt
+test0
+test1
+test2
+test3
+test4
+$ ./runSuite test_suite1.txt ./my_factorial_buggy 1> t1.stdout 2> t1.stderr
+$ echo $?
+0
+$ cat t1.stdout
+Test failed: test3
+Args:
+0
+Expected:
+0! = 1
+Actual:
+0! = 0
+$ t1.stderr
+# runSuite runs unsuccessfully since a .args file exists but cannot be read
+$ cat test_suite2.txt
+test0
+test1
+test2
+test3
+test4
+test5
+test6
+no_such_file
+$ ./runSuite test_suite2.txt ./my_factorial_buggy 1> t2.stdout 2> t2.stderr
+$ echo $?
+1
+$ cat t2.stdout
+Test failed: test3
+Args:
+0
+Expected:
+0! = 1
+Actual:
+0! = 0
+Test failed: test6
+Args:
+Expected:
+-3! = 1
+Actual:
+$ t2.stderr
+test5.args is not readable
+File no_such_file.out does not exist or is not readable
+# runSuite exits early since a .out file cannot be read
+$ cat test_suite3.txt
+test0
+test1
+test2
+no_such_file
+test3
+test4
+test5
+test6
+$ ./runSuite test_suite3.txt ./my_factorial_buggy 1> t2.stdout 2> t2.stderr
+$ echo $?
+1
+$ cat t3.stdout
+$ t3.stderr
+File no_such_file.out does not exist or is not readable

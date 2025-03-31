@@ -1,0 +1,48 @@
+Tic Tac Toe game
+
+[row][column] to make a move (e.g., a1, b2, etc.)
+[undo] to undo the last move
+[list] to list all the moves done so far
+
+  1   2   3
+a   |   |  
+ ---+---+---
+b   |   |  
+ ---+---+---
+c   |   |  
+X's turn: 
+  1   2   3
+a X |   |  
+ ---+---+---
+b   |   |  
+ ---+---+---
+c   |   |  
+O's turn: 
+  1   2   3
+a X |   |  
+ ---+---+---
+b   | O |  
+ ---+---+---
+c   |   |  
+X's turn: 
+  1   2   3
+a X | X |  
+ ---+---+---
+b   | O |  
+ ---+---+---
+c   |   |  
+O's turn: 
+  1   2   3
+a X | X |  
+ ---+---+---
+b   | O |  
+ ---+---+---
+c   |   | O
+X's turn: 
+  1   2   3
+a X | X | X
+ ---+---+---
+b   | O |  
+ ---+---+---
+c   |   | O
+Player X won!

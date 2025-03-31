@@ -1,0 +1,46 @@
+Implement a Reliable Data Transfer protocol over UDP
+
+- transfer a text file from one host to another across an unreliable network
+- can handle network errors (packet loss), packet reordering, and duplicate packets.
+- data packets will flow in one direction only (from sender to receiver)
+- every packet will be acknowledged, and acknowledgement pcakets will flow from receiver to sender
+
+3 total programs
+
+1. sender
+2. receiver
+3. network emulator
+
+Packet Format will look like the following:
+
+integer type;           // 0: ACK, 1: Data, 2: EOT integer
+seqnum;                 // integer
+integer length;         // length of the string variable 'data'
+String data;            // String with Max Length 500
+
+Each integer field is a 4-byte unsigned integer in network byte order
+
+sender.py
+- host address of the network emulator
+- udp port number used by the emulator to receive data from the sender
+- udp port number used by the sender to receive ACKs from the emulator
+- timeout interval in units of ms
+- name of the file to be transfered
+
+Transfer 10 packets -> check which packets we did not receive and send again, 10 at a time
+Send EOT tocken once the entire file has been transfered
+
+receiver.py
+- hostname fro the network emulator
+- udp port number used by the link emulator to receive ACKs from the sender
+- udp port number used by the receiver to receive data from the emulator
+- name of the file into which the received data is written
+
+
+
+
+
+
+
+
+
